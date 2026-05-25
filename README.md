@@ -1,0 +1,2 @@
+# cresta
+Cresta — Sunnyvale, California contact center AI: AI Agent (voice + digital), Agent Assist, Conversation Intelligence, Knowledge Agent, Quality Management. Stanford AI Lab spin-out founded in 2017 by Zayd Enam, Tim Shi, and Sebastian Thrun. Integrates with Five9, Genesys, NICE CXone, Amazon Connect, Twilio Flex, Talkdesk, 8x8, Avaya, Cisco, and SIPREC. API and SDK are private and gated behind enterprise / partner engagement.
