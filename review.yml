@@ -1,0 +1,96 @@
+aid: cresta
+name: Cresta
+review_date: '2026-05-29'
+scope: Public WebSocket API availability for agent-assist suggestions or transcript streaming
+reviewer: API Evangelist
+sources:
+  - https://docs.cresta.com
+  - https://docs.cresta.com/sitemap.md
+  - https://developers.cresta.com
+  - https://cresta.com/ai-platform
+  - https://cresta.com/agent-assist
+  - https://cresta.com/ai-agent
+  - https://cresta.com/blog/the-three-pillars-of-voice-integration-building-hybrid-ai-contact-centers-that-work-with-your-existing-infrastructure
+  - https://cresta.com/blog/understanding-crestas-voice-platform-the-voice-stack
+findings:
+  public_websocket_api: false
+  public_openapi: false
+  public_webhooks_documented: false
+  public_sdk_release: false
+  public_developer_self_service: false
+  authentication_required_for_api_docs: true
+summary: >-
+  Cresta does not expose a documented public WebSocket API for agent-assist
+  suggestions or transcript streaming. The Cresta documentation portal at
+  docs.cresta.com is end-user / customer support content (welcome, walkthrough,
+  trainings, support ticket flows) — its sitemap surfaces no public API,
+  WebSocket, webhook, SDK, streaming, real-time, events, subscription, or
+  developer integration paths. The developers.cresta.com landing page only
+  states that Cresta "provides SDKs and APIs to facilitate integrating with
+  Cresta conversation services" and directs prospective integrators to
+  "request a Cresta demo and learn more about the Cresta SDK and API
+  documentation and references" — full technical references sit behind a
+  customer / partner login.
+websocket_context: >-
+  Cresta does describe WebSocket usage in its public engineering blog, but
+  exclusively as an INBOUND audio-ingestion path: CCaaS platforms push audio
+  into Cresta via WebSocket streaming, gRPC streams, or raw RTP for low-latency
+  real-time processing. This is the "push mode" ingestion side of the Voice
+  Stack (received by Cresta's gowalter service), not an outbound public
+  WebSocket that external consumers can subscribe to for agent-assist
+  recommendations or transcripts. Agent surfacing of transcripts and assist
+  events happens through Cresta's internal apiserver to Cresta-authored agent
+  UIs / embedded surfaces, not via a documented public WS endpoint.
+documented_surfaces:
+  - kind: Embedded Agent UI / Agent Desktop integration
+    public: false
+    notes: >-
+      Cresta delivers agent-assist suggestions and transcripts into agent
+      desktops via embedded Cresta surfaces wired into CCaaS desktops (Five9,
+      Genesys, NICE CXone, Amazon Connect, Twilio Flex, Talkdesk, etc.),
+      configured per customer.
+  - kind: Voice ingestion (inbound)
+    public: false
+    notes: >-
+      WebSocket streaming, gRPC streams, raw RTP, SIPREC, SIP trunking, PSTN
+      transfer, and CCaaS native streaming are supported as transports for
+      audio into Cresta. These are integration patterns negotiated with each
+      CCaaS or SBC partner — not a published public WS API.
+  - kind: AI Agent tool access
+    public: false
+    notes: >-
+      Cresta AI Agent supports API-based function calling and Model Context
+      Protocol (MCP) for standardized outbound tool access. This is calling
+      customer / partner tools, not a public Cresta API.
+  - kind: REST API
+    public: false
+    notes: >-
+      Referenced generically as "APIs to facilitate integrating with Cresta
+      conversation services" but no public reference, base URL, endpoints,
+      authentication scheme, or OpenAPI specification is published. Access is
+      gated behind customer / partner engagement.
+  - kind: Webhooks
+    public: false
+    notes: >-
+      No public webhook catalog, event list, payload schemas, or subscription
+      mechanism is documented on docs.cresta.com or developers.cresta.com.
+  - kind: SDK
+    public: false
+    notes: >-
+      Cresta SDK is referenced on developers.cresta.com as "comprehensive
+      public facing SDK" but no package, repository, version, language, or
+      reference material is reachable without a customer / partner login.
+asyncapi_recommended: false
+openapi_recommended: false
+reason_no_spec: >-
+  No public, stable, addressable WebSocket / streaming endpoint or message
+  catalog is documented. Authoring an AsyncAPI spec would require fabricating
+  channels, operations, and message schemas that Cresta has not published.
+  Per project rules (no fabrication), only this review.yml is produced and
+  no asyncapi/ or openapi/ artifact is created.
+apis_yml_updated: false
+apis_yml_reason: >-
+  Existing apis.yml already accurately characterizes Cresta as having a
+  private, gated API/SDK with no public OpenAPI, no public SDK release, and
+  no public developer self-service portal. No new public surface was
+  discovered that warrants an update.
