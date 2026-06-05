@@ -1,0 +1,130 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "cresta": "https://cresta.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Organization": "schema:Organization",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+    "foundingDate": "schema:foundingDate",
+    "location": "schema:location",
+    "industry": "schema:industry",
+    "sameAs": "schema:sameAs",
+
+    "ContactCenter": {
+      "@id": "cresta:ContactCenter",
+      "@type": "schema:Thing",
+      "@context": {
+        "platform": "cresta:platform",
+        "channels": "cresta:channels",
+        "integrations": "cresta:integrations"
+      }
+    },
+
+    "AIAgent": {
+      "@id": "cresta:AIAgent",
+      "@type": "schema:SoftwareApplication",
+      "@context": {
+        "agentType": "cresta:agentType",
+        "supportedLanguages": "cresta:supportedLanguages",
+        "functionCalling": "cresta:functionCalling",
+        "mcpSupport": "cresta:mcpSupport",
+        "channels": "cresta:channels"
+      }
+    },
+
+    "AgentAssist": {
+      "@id": "cresta:AgentAssist",
+      "@type": "schema:SoftwareApplication",
+      "@context": {
+        "realTimeGuidance": "cresta:realTimeGuidance",
+        "nextBestAction": "cresta:nextBestAction",
+        "knowledgeSurfacing": "cresta:knowledgeSurfacing"
+      }
+    },
+
+    "ConversationIntelligence": {
+      "@id": "cresta:ConversationIntelligence",
+      "@type": "schema:SoftwareApplication",
+      "@context": {
+        "analysisScope": "cresta:analysisScope",
+        "insightTypes": "cresta:insightTypes",
+        "automatedScoring": "cresta:automatedScoring"
+      }
+    },
+
+    "KnowledgeAgent": {
+      "@id": "cresta:KnowledgeAgent",
+      "@type": "schema:SoftwareApplication",
+      "@context": {
+        "knowledgeBase": "cresta:knowledgeBase",
+        "retrievalMode": "cresta:retrievalMode"
+      }
+    },
+
+    "QualityManagement": {
+      "@id": "cresta:QualityManagement",
+      "@type": "schema:SoftwareApplication",
+      "@context": {
+        "scoringCoverage": "cresta:scoringCoverage",
+        "automatedQA": "cresta:automatedQA"
+      }
+    },
+
+    "Conversation": {
+      "@id": "cresta:Conversation",
+      "@type": "schema:Conversation",
+      "@context": {
+        "channel": "cresta:channel",
+        "transcript": "cresta:transcript",
+        "participants": "cresta:participants",
+        "startTime": {
+          "@id": "cresta:startTime",
+          "@type": "xsd:dateTime"
+        },
+        "endTime": {
+          "@id": "cresta:endTime",
+          "@type": "xsd:dateTime"
+        },
+        "sentiment": "cresta:sentiment",
+        "summary": "cresta:summary"
+      }
+    },
+
+    "VoiceIntegration": {
+      "@id": "cresta:VoiceIntegration",
+      "@type": "schema:Thing",
+      "@context": {
+        "platform": "cresta:platform",
+        "protocol": "cresta:protocol",
+        "transport": "cresta:transport"
+      }
+    },
+
+    "MultiModelArchitecture": {
+      "@id": "cresta:MultiModelArchitecture",
+      "@type": "schema:SoftwareApplication",
+      "@context": {
+        "modelCount": "cresta:modelCount",
+        "fineTuning": "cresta:fineTuning",
+        "guardrails": "cresta:guardrails"
+      }
+    },
+
+    "channel": "cresta:channel",
+    "transcript": "cresta:transcript",
+    "agentId": "cresta:agentId",
+    "customerId": "cresta:customerId",
+    "sentiment": "cresta:sentiment",
+    "intent": "cresta:intent",
+    "summary": "cresta:summary",
+    "score": "cresta:score",
+    "guidance": "cresta:guidance",
+    "handoff": "cresta:handoff",
+    "transfer": "cresta:transfer",
+    "escalation": "cresta:escalation"
+  }
+}

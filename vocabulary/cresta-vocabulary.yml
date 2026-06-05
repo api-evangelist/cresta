@@ -1,0 +1,199 @@
+vocabulary:
+  name: Cresta Contact Center AI Vocabulary
+  description: >
+    Key terms and concepts from the Cresta platform — a contact center AI
+    system unifying human and AI agents across voice, chat, and SMS channels
+    with real-time guidance, autonomous agents, conversation intelligence,
+    and automated quality management.
+  version: "1.0.0"
+  terms:
+
+    - term: AI Agent
+      definition: >
+        An autonomous software agent deployed by Cresta that handles end-to-end
+        customer interactions across voice, chat, and SMS without human
+        involvement, supporting 30+ languages and API-based function calling
+        plus Model Context Protocol (MCP) for tool access.
+      tags:
+        - ai
+        - automation
+        - contact-center
+        - voice
+        - digital
+
+    - term: Agent Assist
+      definition: >
+        A real-time AI overlay for human contact center agents that surfaces
+        relevant knowledge, suggests next-best-actions, and provides live
+        coaching during customer conversations to improve resolution rates
+        and handle time.
+      tags:
+        - ai
+        - real-time
+        - human-agent
+        - coaching
+        - contact-center
+
+    - term: Conversation Intelligence
+      definition: >
+        Automated analysis of 100% of contact center conversations — voice
+        and digital — to surface insights, revenue signals, compliance gaps,
+        and behavioral patterns without manual sampling.
+      tags:
+        - analytics
+        - ai
+        - conversation
+        - quality
+        - insight
+
+    - term: Knowledge Agent
+      definition: >
+        A proactive real-time answer-retrieval component that queries enterprise
+        knowledge bases during live conversations and surfaces the most
+        relevant content to either the AI Agent or the human agent with
+        minimal latency.
+      tags:
+        - knowledge-management
+        - retrieval
+        - real-time
+        - ai
+
+    - term: Quality Management
+      definition: >
+        Automated QA scoring applied to 100% of contact center conversations
+        using AI-driven rubrics rather than manual sampling, enabling
+        consistent, scalable evaluation of agent performance and compliance.
+      tags:
+        - quality-assurance
+        - scoring
+        - compliance
+        - automation
+        - contact-center
+
+    - term: Multi-Model Architecture
+      definition: >
+        Cresta's AI infrastructure composed of 20+ large and small language
+        models, each fine-tuned on customer-specific transcripts and synthetic
+        data, orchestrated by supervisory models and enterprise guardrails
+        to handle specialized contact center tasks.
+      tags:
+        - llm
+        - architecture
+        - fine-tuning
+        - enterprise-ai
+
+    - term: Model Context Protocol (MCP)
+      definition: >
+        A standardized protocol enabling Cresta AI Agents to access external
+        tools and data sources via a consistent interface, supporting
+        API-based function calling for CRM lookups, order management,
+        and other enterprise system integrations.
+      tags:
+        - mcp
+        - integration
+        - function-calling
+        - api
+
+    - term: Real-Time Coaching
+      definition: >
+        In-conversation prompts and guidance delivered to human agents by
+        the Cresta platform based on live transcript analysis, improving
+        adherence to scripts, compliance requirements, and empathy cues.
+      tags:
+        - coaching
+        - real-time
+        - human-agent
+        - compliance
+
+    - term: Handoff
+      definition: >
+        The transfer of a conversation from an AI Agent to a human agent
+        (or vice versa) including bidirectional metadata exchange — caller ID,
+        IVR selections, routing data, and conversation summaries — to preserve
+        context across the boundary.
+      tags:
+        - transfer
+        - context
+        - ai
+        - human-agent
+        - workflow
+
+    - term: SIPREC
+      definition: >
+        Session Recording Protocol used by Cresta for passive call recording
+        integration across session border controllers from Oracle, Ribbon,
+        Avaya, and Cisco CUBE, enabling real-time audio ingestion without
+        changes to existing telephony infrastructure.
+      tags:
+        - sip
+        - voice
+        - recording
+        - telephony
+        - integration
+
+    - term: CCaaS
+      definition: >
+        Contact Center as a Service — cloud-delivered contact center
+        platforms such as Five9, Genesys Cloud CX, NICE CXone, Amazon Connect,
+        and Twilio Flex with which Cresta integrates via native streaming
+        APIs and WebSocket/gRPC channels.
+      tags:
+        - cloud
+        - contact-center
+        - platform
+        - integration
+        - saas
+
+    - term: Voice Transport
+      definition: >
+        The set of protocols and mechanisms through which Cresta receives
+        audio: SIP trunking, PSTN transfer, CCaaS native streaming,
+        WebSocket, gRPC, raw RTP, pull-mode from cloud storage (e.g.,
+        AWS Kinesis Video Streams), and desktop audio capture.
+      tags:
+        - voice
+        - sip
+        - rtp
+        - grpc
+        - websocket
+        - telephony
+
+    - term: Agent Operations Center
+      definition: >
+        A supervisory dashboard within the Cresta platform giving contact
+        center managers real-time visibility into AI and human agent
+        activity, enabling live monitoring, intervention, and performance
+        management across all active conversations.
+      tags:
+        - monitoring
+        - supervision
+        - operations
+        - dashboard
+        - real-time
+
+    - term: After-Call Automation
+      definition: >
+        Automated workflows triggered immediately after a conversation ends,
+        including summary generation, CRM updates, follow-up scheduling,
+        and disposition coding, reducing after-call work time for human
+        agents or eliminating it for AI Agents.
+      tags:
+        - automation
+        - workflow
+        - crm
+        - post-call
+        - efficiency
+
+    - term: Enterprise Guardrails
+      definition: >
+        Configurable safety and compliance controls within Cresta's
+        multi-model architecture — including supervisory models, content
+        filters, topic restrictions, and continuous threat detection — that
+        constrain AI Agent behavior to approved topics and regulatory
+        requirements.
+      tags:
+        - safety
+        - compliance
+        - governance
+        - ai
+        - enterprise
