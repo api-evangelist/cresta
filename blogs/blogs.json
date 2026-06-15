@@ -2,13 +2,17 @@
   "repo": "cresta",
   "feeds": [
     {
-      "source": "https://cresta.com",
-      "feed_url": "https://cresta.com/blog",
-      "title": "Cresta Blog",
+      "source": "https://cresta.com/blog/feed/",
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://cresta.com/careers",
+      "feed_url": "https://cresta.com/careers",
+      "title": "",
       "saved": 0,
       "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-05T00:00:00Z"
+  "fetched": "2026-06-14T20:42:17Z"
 }
