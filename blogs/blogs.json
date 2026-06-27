@@ -2,17 +2,19 @@
   "repo": "cresta",
   "feeds": [
     {
-      "source": "https://cresta.com/blog/feed/",
-      "error": "HTTPError"
+      "source": "https://cresta.com/blog",
+      "feed_url": "",
+      "saved": 0,
+      "method": "agent-scrape",
+      "note": "listing has no visible publish dates; no in-window posts determinable"
     },
     {
       "source": "https://cresta.com/careers",
-      "feed_url": "https://cresta.com/careers",
-      "title": "",
       "saved": 0,
-      "method": "none"
+      "error": "not a blog feed"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:34:29Z",
+  "agent_pulled": "2026-06-27"
 }
