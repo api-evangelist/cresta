@@ -50,6 +50,12 @@ modified: '2026-05-24'
 specificationVersion: '0.20'
 apis: []
 common:
+  - type: TrustCenter
+    url: security/cresta-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/cresta-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/cresta-domain-security.yml
   - type: Website
     url: https://cresta.com
   - type: Portal
