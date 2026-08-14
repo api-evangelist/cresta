@@ -1,28 +1,40 @@
 aid: cresta
 name: Cresta
 description: >-
-  Cresta is a Mountain View / Sunnyvale, California contact center AI company
-  spun out of the Stanford AI Lab and founded in 2017 by Zayd Enam, Tim Shi,
-  and Sebastian Thrun. The platform unifies human and AI agents for the
-  enterprise contact center across voice, chat, and SMS, combining real-time
-  agent assist, autonomous voice and digital AI agents, conversation
-  intelligence, a knowledge agent, and automated quality management.
-  Cresta runs a multi-model architecture composed of 20+ large and small
-  language models, fine-tuned on customer-specific transcripts and synthetic
-  data, with enterprise guardrails, supervisory models, and a no-code
-  orchestration surface. The AI Agent supports API-based function calling
-  and Model Context Protocol (MCP) for standardized tool access. Voice
-  integrations span Five9, Genesys (Cloud CX and Engage), NICE CXone,
-  Amazon Connect, Twilio Flex, Talkdesk, 8x8, Vonage, Gladly, TCN, RingCX,
-  Avaya Infinity, Cisco UCCE/PCCE/UCCX, and SIPREC across Oracle, Ribbon,
-  Avaya SBC, and Cisco CUBE via SIP, PSTN transfer, CCaaS native streaming,
-  WebSocket, gRPC, and raw RTP. Cresta is privately held with $270M+ raised
-  across rounds led by Greylock, Andreessen Horowitz, Sequoia, and Tiger
-  Global, with strategic investors including Genesys, Five9, Accenture,
-  Comcast, Qualcomm, JP Morgan, and Workday Ventures. The Cresta API and
-  SDK are private and gated behind a customer / partner engagement; there
-  is no public OpenAPI specification, no public SDK release, and no public
-  developer self-service portal.
+  Cresta (legally Cresta Intelligence, Inc.) is a Palo Alto, California
+  enterprise Customer Experience AI company spun out of the Stanford AI Lab
+  and founded in 2017 by Zayd Enam, Tim Shi, and Sebastian Thrun, and led
+  since 2023 by CEO Ping Wu, the former co-founder of Google Contact Center
+  AI. The platform unifies human and AI agents for the enterprise contact
+  center across voice, chat, email, and SMS, combining real-time agent
+  assist, autonomous omnichannel AI agents, conversation intelligence, an
+  AI analyst, a knowledge agent, coaching, a training simulator, and
+  automated quality management, all orchestrated through Cresta Opera, a
+  no-code AI orchestration layer, with Cresta Conductor as the developer
+  facing agentic engine for building and optimizing AI agents. Cresta runs
+  a multi-model architecture composed of 20+ large and small language
+  models, fine-tuned on customer-specific transcripts and synthetic data,
+  with enterprise guardrails, supervisory models, and automated pre-release
+  AI agent testing. The AI Agent consumes external tools through API-based
+  function calling and the Model Context Protocol; Cresta itself does not
+  publish an MCP server. Voice integrations span Five9, Genesys (Cloud CX
+  and Engage), NICE CXone, Amazon Connect, Twilio Flex, Talkdesk, 8x8,
+  Vonage, Gladly, TCN, RingCX, Avaya Infinity, Cisco UCCE/PCCE/UCCX, and
+  SIPREC across Oracle, Ribbon, Avaya SBC, and Cisco CUBE via SIP, PSTN
+  transfer, CCaaS native streaming, WebSocket, gRPC, and raw RTP. Cresta is
+  privately held at Series D with $280M+ raised from Greylock, Andreessen
+  Horowitz, Sequoia, Tiger Global, Coatue, Greenoaks, Lightspeed, Porsche
+  Ventures, World Innovation Lab, and the Qatar Investment Authority, plus
+  strategic investors including Genesys, Five9, Accenture, Comcast,
+  Qualcomm, JP Morgan, and Workday Ventures. It is the first Customer
+  Experience AI provider to hold ISO/IEC 42001 certification, alongside
+  SOC 2 Type II, ISO 27001, HIPAA, GDPR, TISAX, CCPA, and PCI DSS posture.
+  A production API host is live at api.cresta.com — a gRPC-JSON transcoding
+  gateway that answers anonymously with a google.rpc.Status error envelope —
+  but the Cresta API and SDK are gated behind a customer / partner
+  engagement: there is no public OpenAPI specification, no published API
+  reference or base-path documentation, no public SDK release on any
+  package registry, no public pricing, and no developer self-service signup.
 type: Index
 accessModel:
   pricing: unknown
@@ -55,11 +67,40 @@ tags:
   - After-Call Automation
   - Enterprise AI
   - MCP
+  - Customer Experience AI
+  - AI Agents
+  - gRPC
+  - Speech Analytics
+  - Enterprise Software
 url: https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/apis.yml
 created: '2026-05-24'
-modified: '2026-05-24'
+modified: '2026-08-14'
 specificationVersion: '0.20'
-apis: []
+apis:
+  - name: Cresta Platform API
+    description: >-
+      Cresta's production API host. https://api.cresta.com resolves and answers
+      anonymously with a gRPC-JSON transcoding gateway error envelope
+      ({"code":2,"httpStatus":500,"message":"the requested gRPC method is either
+      not registered, or registered with a different HTTP method","status":
+      "UNKNOWN"}), confirming a live grpc-gateway fronting Cresta's gRPC
+      services. Cresta describes it publicly only as "SDKs and APIs to
+      facilitate integrating with Cresta conversation services"; no reference,
+      method list, base path, authentication scheme, or OpenAPI specification is
+      published, and developers.cresta.com routes prospective integrators to a
+      demo request. Recorded as a confirmed but gated surface — probed, never
+      credentialed.
+    humanURL: https://developers.cresta.com
+    baseURL: https://api.cresta.com
+    tags:
+      - Contact Center AI
+      - Conversational AI
+      - gRPC
+    properties:
+      - type: DeveloperPortal
+        url: https://developers.cresta.com
+      - type: ContactSales
+        url: https://cresta.com/request-a-demo
 common:
   - type: TrustCenter
     url: security/cresta-trust-center.yml
@@ -67,14 +108,34 @@ common:
     url: security/cresta-vulnerability-disclosure.yml
   - type: DomainSecurity
     url: security/cresta-domain-security.yml
+  - type: Security
+    url: https://cresta.com/trust
+  - type: Compliance
+    url: conformance/cresta-conformance.yml
+  - type: Conformance
+    url: conformance/cresta-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/cresta-lifecycle.yml
+  - type: StatusPage
+    url: https://status.cresta.com
+  - type: WellKnown
+    url: well-known/cresta-well-known.yml
+  - type: SecurityTxt
+    url: well-known/cresta-security.txt
+  - type: LLMsTxt
+    url: llms/cresta-llms.txt
+  - type: Plans
+    url: plans/cresta-plans-pricing.yml
   - type: Website
     url: https://cresta.com
+  - type: DeveloperPortal
+    url: https://developers.cresta.com
   - type: Portal
-    url: https://cresta.com/ai-platform
+    url: https://cresta.com/platform-overview
   - type: Documentation
     url: https://docs.cresta.com
-  - type: Documentation
-    url: https://developers.cresta.com
+  - type: HelpCenter
+    url: https://docs.cresta.com
   - type: Product
     url: https://cresta.com/ai-agent
   - type: Product
@@ -86,33 +147,39 @@ common:
   - type: Product
     url: https://cresta.com/quality-management
   - type: Company
-    url: https://cresta.com/about
+    url: https://cresta.com/about-us
   - type: Careers
     url: https://cresta.com/careers
   - type: Blog
     url: https://cresta.com/blog
   - type: Newsroom
-    url: https://cresta.com/news
-  - type: Webinars
-    url: https://cresta.com/webinars
+    url: https://cresta.com/press
+  - type: Resources
+    url: https://cresta.com/resources
   - type: Customers
-    url: https://cresta.com/customers
+    url: https://cresta.com/customer-stories
   - type: TrustCenter
     url: https://cresta.com/trust
   - type: PrivacyPolicy
-    url: https://cresta.com/privacy
+    url: https://cresta.com/legal/privacy-policy
   - type: TermsOfService
-    url: https://cresta.com/terms
-  - type: Security
-    url: https://cresta.com/security
+    url: https://cresta.com/legal/terms-of-service
+  - type: SLA
+    url: https://cresta.com/legal/service-level-agreement
+  - type: Legal
+    url: https://cresta.com/legal
   - type: Support
-    url: https://cresta.com/support
+    url: https://cresta.com/contact-us
   - type: Login
-    url: https://cresta.com/login
-  - type: StatusPage
-    url: https://cresta.com/status
+    url: https://login.cresta.com
+  - type: Partners
+    url: https://cresta.com/partner
+  - type: Integrations
+    url: https://cresta.com/integrations
+  - type: ResponsibleAI
+    url: https://cresta.com/responsible-ai
   - type: ContactSales
-    url: https://cresta.com/demo
+    url: https://cresta.com/request-a-demo
   - type: GitHubOrganization
     url: https://github.com/cresta
   - type: LinkedIn
@@ -187,23 +254,61 @@ common:
       - No-code Discover / Build / Test / Deploy / Optimize lifecycle for AI workflows
       - Agent Operations Center for real-time monitoring, supervision, and intervention
       - Enterprise guardrails, supervisory models, and continuous threat detection
-      - API-based function calling and Model Context Protocol (MCP) tool access from AI Agent
+      - Cresta Opera — no-code AI orchestration layer underneath every product
+      - Cresta Conductor — developer-facing agentic engine for building, testing, and optimizing AI agents
+      - AI Agent consumes external tools via API function calling and MCP (Cresta is an MCP client, not an MCP server)
       - Bidirectional metadata exchange (caller ID, IVR selections, routing data, conversation summaries) during transfers and handoffs
       - Voice transport via SIP trunking, PSTN transfer, CCaaS native streaming, WebSocket, gRPC, and raw RTP
       - Pull-mode audio retrieval from cloud storage (e.g., AWS KVS) or direct desktop capture
       - Warm transfer, cold transfer, conference bridge, and multi-party call tracking
       - Shared conversation memory across channels and human ↔ AI handoffs
       - Configurable voice persona — tone, empathy, communication style, pacing, pronunciation
-      - SOC 2, ISO 27001, HIPAA, and GDPR compliance posture
+      - ISO/IEC 42001, SOC 2 Type II, ISO 27001, HIPAA, GDPR, TISAX, and CCPA compliance posture
+      - Live production API host at api.cresta.com — a gRPC-JSON transcoding gateway, confirmed by anonymous probe
+      - Public Atlassian Statuspage with a machine-readable v2 JSON API and RSS incident history
+      - RFC 9116 security.txt with HackerOne submission form and PGP key
+      - First-party page written for AI assistants at cresta.com/llm-info ("Hey AI, learn about us")
       - Private, gated API and SDK — no public OpenAPI, no public SDK release, no self-service developer signup
+      - Help center at docs.cresta.com is robots-disallowed with Content-Signal ai-train=no, search=no, ai-input=no
     sources:
       - https://cresta.com
-      - https://cresta.com/ai-platform
+      - https://cresta.com/platform-overview
       - https://cresta.com/ai-agent
+      - https://cresta.com/llm-info
+      - https://cresta.com/trust
+      - https://status.cresta.com/api/v2/summary.json
+      - https://cresta.com/.well-known/security.txt
       - https://cresta.com/blog/the-three-pillars-of-voice-integration-building-hybrid-ai-contact-centers-that-work-with-your-existing-infrastructure
       - https://docs.cresta.com
       - https://developers.cresta.com
-    updated: '2026-05-24'
+    updated: '2026-08-14'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-14'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1
+x-coverage:
+  state: covered
+  reason: null
+  detail: >-
+    Contract discovery beat the previous round's "no API" finding: api.cresta.com
+    is live and answers anonymously with a gRPC-JSON gateway envelope, so the API
+    exists and is gated rather than absent. No machine-readable contract is
+    published on any Cresta host, but ten real artifacts were harvested or
+    probed, including a verbatim RFC 9116 security.txt and the public Statuspage
+    v2 JSON API.
+  evidence:
+    - url: https://api.cresta.com/
+      status: 405
+    - url: https://cresta.com/.well-known/security.txt
+      status: 200
+    - url: https://status.cresta.com/api/v2/summary.json
+      status: 200
+    - url: https://cresta.com/llm-info
+      status: 200
+    - url: https://developers.cresta.com/
+      status: 200
+  checked: '2026-08-14'
