@@ -94,3 +94,33 @@ apis_yml_reason: >-
   private, gated API/SDK with no public OpenAPI, no public SDK release, and
   no public developer self-service portal. No new public surface was
   discovered that warrants an update.
+addendum:
+  date: '2026-08-14'
+  by: API Evangelist enrichment pipeline (contract discovery)
+  supersedes_partially:
+    - documented_surfaces[kind=REST API].notes ("no base URL")
+  finding: >-
+    The 2026-05-29 review concluded no public base URL was published. That is
+    still true of the DOCUMENTATION, but the API HOST itself is live and
+    resolvable: https://api.cresta.com answers anonymous requests with
+    {"code":2,"httpStatus":500,"message":"the requested gRPC method is either
+    not registered, or registered with a different HTTP method","status":
+    "UNKNOWN"} — the grpc-gateway transcoding error — on every path and verb
+    probed. Cresta therefore runs a production gRPC service with a JSON gateway
+    at a conventional, guessable host. The correct characterization is a
+    CONFIRMED-BUT-GATED API, not an absent one, and apis.yml now carries a
+    "Cresta Platform API" entry with baseURL https://api.cresta.com. Still
+    absent: any OpenAPI/Swagger/AsyncAPI/GraphQL/Protobuf document, any method
+    or base-path list, any authentication documentation, and any published SDK
+    package on npm, PyPI, RubyGems, crates.io, NuGet, Maven Central or
+    pkg.go.dev.
+  also_found:
+    - 'https://cresta.com/.well-known/security.txt — RFC 9116, self-declared canonical (200)'
+    - 'https://status.cresta.com — Atlassian Statuspage with a public v2 JSON API and RSS history (200); 32 components'
+    - 'https://cresta.com/llm-info — first-party page written for AI assistants, linked in the footer as "Hey AI, learn about us" (200)'
+    - 'docs.cresta.com/robots.txt — Disallow: / with Content-Signal ai-train=no, search=no, ai-input=no; honored, host not crawled'
+    - 'trust.cresta.com serves SafeBase OAuth/OIDC discovery (issuer app.safebase.io) — vendor-owned, not a Cresta authorization server'
+  mcp_direction_correction: >-
+    Cresta AI Agent is an MCP CLIENT consuming customer tools. Cresta publishes
+    no MCP server, so no agent can call Cresta over MCP. Recorded in
+    mcp/cresta-mcp.yml with deployment.mode: none.

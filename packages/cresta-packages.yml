@@ -1,0 +1,53 @@
+generated: '2026-08-14'
+method: searched
+source: registry searches across npm, PyPI, RubyGems, crates.io, NuGet, Maven Central and pkg.go.dev
+package_count: 0
+official_package_count: 0
+packages: []
+note: >-
+  Cresta ships no first-party client library on any public package registry.
+  developers.cresta.com markets a "comprehensive public facing SDK" in prose but
+  links to no package, repository, language, or version — only to a demo
+  request. Every registry probe below is an honest miss, so no `Packages` and no
+  `SDKs` pointer is wired: an SDKs pointer would credit Cresta with a shipped
+  client library it does not publish.
+registries_searched:
+  - registry: npm
+    query: cresta
+    result: >-
+      No first-party package. The only Cresta-org publication is
+      @cresta-oss/samlify 2.7.4-no-cert-in-response-2 (published 2021-07-08), a
+      fork of the third-party samlify SAML library, not a Cresta API client.
+    version: null
+    published: null
+  - {registry: pypi, query: cresta, result: 'https://pypi.org/pypi/cresta/json returned 404', version: null, published: null}
+  - {registry: pypi, query: cresta-sdk, result: 'https://pypi.org/pypi/cresta-sdk/json returned 404', version: null, published: null}
+  - {registry: rubygems, query: cresta, result: no first-party gem, version: null, published: null}
+  - {registry: crates.io, query: cresta, result: no first-party crate, version: null, published: null}
+  - {registry: nuget, query: cresta, result: no first-party package, version: null, published: null}
+  - {registry: maven-central, query: cresta, result: no first-party artifact, version: null, published: null}
+  - {registry: pkg.go.dev, query: cresta, result: 'no client module; the github.com/cresta org publishes Go infrastructure tooling (helm-autoupdate, gitdb, zapctx, pipe, gotracing) and forks, not an API client', version: null, published: null}
+github_org:
+  url: https://github.com/cresta
+  public_repos: 78
+  note: >-
+    The public GitHub org is infrastructure tooling, forks of upstream OSS, and
+    per-partner integration samples. Nothing in it is a Cresta API client
+    library or a Cresta API contract. The integration-sample repos that do exist
+    are customer-side glue, not a published SDK:
+  integration_samples:
+    - {repo: 'cresta/CrestaVoice-TwilioFlexPluginIntegration-FollowTheCustomer', language: javascript, note: Twilio Flex plugin + Functions for Media Streams}
+    - {repo: 'cresta/CrestaVoice-TwilioFlexPluginIntegration-FollowTheAgent', language: javascript, note: Twilio Flex plugin, follow-the-agent variant}
+    - {repo: 'cresta/cresta-voiceflow-extension', language: javascript, note: Voiceflow integration extension}
+    - {repo: 'cresta/amazon-connect-pstn-transfer', language: go, note: AWS resources for PSTN-only transfer}
+    - {repo: 'cresta/allow-cresta-aws-connect', language: cloudformation, note: CloudFormation template granting Cresta access to a customer's Amazon Connect}
+    - {repo: 'cresta/allow-cresta-s3-data-transfer', language: cloudformation, note: CloudFormation template for Cresta S3 data integration}
+third_party:
+  - name: NoBanks/cresta-mcp
+    url: https://github.com/NoBanks/cresta-mcp
+    official: false
+    note: >-
+      A third-party, unaffiliated MCP server that claims 8 tools over "the
+      Cresta contact-center AI REST API". NOT published, endorsed or documented
+      by Cresta, and not usable as evidence of Cresta's contract. Recorded here
+      only so a later pass does not mistake it for a first-party package.

@@ -1,0 +1,94 @@
+generated: '2026-08-14'
+method: searched
+source: https://status.cresta.com/api/v2/summary.json
+status_page: https://status.cresta.com
+status_page_platform: Atlassian Statuspage
+status_page_machine_readable:
+  - {url: 'https://status.cresta.com/api/v2/status.json', status: 200, format: json}
+  - {url: 'https://status.cresta.com/api/v2/summary.json', status: 200, format: json}
+  - {url: 'https://status.cresta.com/history.rss', status: 200, format: rss}
+status_components:
+  observed: '2026-08-14'
+  count: 32
+  groups:
+    - name: Cresta Director
+      components:
+        - Insights - Performance
+        - Hints
+        - Live Transcript
+        - Insights - Leaderboard
+        - Suggestions
+        - Knowledge-base Search
+        - Keyword Insights
+    - name: Agent Assist - Chat
+      components:
+        - Smart Compose
+        - Guided Workflow
+        - Live Conversations - Calls
+        - Knowledge-base Search
+    - name: Agent Assist - Voice
+      components:
+        - Call Flow
+        - Closed Conversations - Calls
+        - Guided Workflow
+        - Cresta Builder - Keyword Triggers
+        - AI Agent
+        - Live Conversations - Chats
+        - Knowledge Assist
+  ungrouped:
+    - Cresta Login
+    - Closed Conversations - Chats
+    - Auto Summarization
+    - Coaching Overview
+    - Cresta Builder
+    - Authentication/User Access
+    - Post Call Ingestion
+    - Topic Discovery
+    - Customer Insights
+    - Outcome Insights
+  note: >-
+    The component list is the only public, machine-readable inventory of Cresta
+    platform surfaces. It independently corroborates an Authentication/User
+    Access service and a Cresta Login service behind api.cresta.com.
+sla:
+  url: https://cresta.com/legal/service-level-agreement
+  http_status: 200
+  uptime_target: null
+  service_credits: null
+  note: >-
+    Cresta publishes an SLA page at a public URL, but the page body is
+    client-side rendered and served as an empty Webflow shell — a text
+    extraction of the fetched HTML yields 3,484 characters of chrome and no
+    agreement text, no uptime percentage, no service-credit schedule and no
+    severity tiers. Recorded as present-but-unreadable rather than absent.
+  last_updated_meta: '2024-08-21'
+versioning:
+  scheme: unknown
+  current: null
+  docs: null
+  note: >-
+    No public versioning policy. The API host is a gRPC-JSON transcoding
+    gateway; whether versions are carried in the gRPC package path or elsewhere
+    is not documented publicly.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: >-
+    No deprecation policy, Sunset/Deprecation header commitment (RFC 8594), or
+    end-of-life schedule is published on any Cresta host. No `Deprecation`
+    pointer is emitted.
+changelog:
+  url: null
+  note: >-
+    No public dated changelog or release-notes feed. /changelog, /releases and
+    /whats-new all return 404 on cresta.com; product announcements are made as
+    blog and press posts. Release notes, if any, sit inside the customer help
+    center at docs.cresta.com, whose robots.txt is `Disallow: /`.
+deprecated_operations: []
+evidence:
+  - {url: 'https://status.cresta.com/', status: 200}
+  - {url: 'https://status.cresta.com/api/v2/summary.json', status: 200}
+  - {url: 'https://cresta.com/legal/service-level-agreement', status: 200}
+  - {url: 'https://cresta.com/changelog', status: 404}
+  - {url: 'https://cresta.com/releases', status: 404}
+  - {url: 'https://cresta.com/whats-new', status: 404}

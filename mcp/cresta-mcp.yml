@@ -1,0 +1,52 @@
+generated: '2026-08-14'
+method: searched
+source: https://cresta.com/llm-info
+status: none
+published: false
+server: null
+tools: []
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+direction:
+  cresta_is: mcp-client
+  cresta_is_not: mcp-server
+  note: >-
+    This is the whole finding, and it is the one that is routinely recorded
+    backwards. Cresta's marketing, its apis.yml feature list and its press
+    coverage all say "MCP", and every one of those references is Cresta AI Agent
+    CONSUMING external tools: "Agents connect to CRM, billing, scheduling, and
+    other systems via secure API-based function calling and MCP support to
+    retrieve data and complete tasks in real time." Cresta is the MCP host/client
+    calling a customer's servers. It publishes no MCP server of its own, so an
+    agent cannot call Cresta over MCP. No `MCPServer` pointer is wired in
+    apis.yml, and no candidate tool list is derived, because there is no public
+    OpenAPI to derive one from — inventing tool names here would manufacture an
+    agent surface Cresta does not ship.
+probes:
+  - {url: 'https://api.cresta.com/mcp', status: 405, note: grpc-gateway "method not registered" envelope, not an MCP endpoint}
+  - {url: 'https://cresta.com/.well-known/ai-plugin.json', status: 404}
+  - {url: 'https://api.cresta.com/.well-known/oauth-protected-resource', status: 405}
+  - {url: 'https://cresta.com/.well-known/oauth-authorization-server', status: 404}
+vendor_mcp_on_a_cresta_subdomain:
+  host: trust.cresta.com
+  issuer: https://app.safebase.io/api/mcp
+  owned_by_provider: false
+  note: >-
+    trust.cresta.com serves OAuth/OIDC discovery documents pointing at
+    SafeBase's MCP endpoint. SafeBase is the SaaS vendor behind the trust
+    center; this is SafeBase's MCP server reachable through a CNAMEd Cresta
+    subdomain, and it is NOT a Cresta MCP surface. Recorded so a later pass does
+    not credit Cresta with it.
+third_party_servers:
+  - name: NoBanks/cresta-mcp
+    url: https://github.com/NoBanks/cresta-mcp
+    official: false
+    note: >-
+      Unaffiliated community MCP server claiming 8 tools over a Cresta REST API.
+      Not published or acknowledged by Cresta; its tool list is not evidence of
+      Cresta's contract and is not mirrored here.

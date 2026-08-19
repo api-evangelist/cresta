@@ -1,0 +1,29 @@
+generated: '2026-08-14'
+method: searched
+source: https://developers.cresta.com
+limit_count: 0
+limits: []
+response_headers: []
+exhaustion_status: null
+note: >-
+  Cresta documents no rate limits. There is no public API reference to carry
+  them: developers.cresta.com is a single static page that describes the SDK in
+  prose and routes integrators to a demo request, and the help center at
+  docs.cresta.com is customer-facing and robots-disallowed. Anonymous probes of
+  api.cresta.com return HTTP 405 from the gRPC-JSON gateway with no
+  X-RateLimit-*, RateLimit-* or Retry-After headers on the response, so no
+  runtime limit signal could be observed either. NO `RateLimits` pointer is
+  wired in apis.yml — this artifact records an absence, and a pointer would
+  read to the scorer as a published rate-limit contract.
+observed_response_headers_on_405:
+  - date
+  - content-type
+  - access-control-max-age
+  - vary
+  - strict-transport-security
+  - cf-cache-status
+  - server
+  - cf-ray
+evidence:
+  - {url: 'https://api.cresta.com/', status: 405, note: no rate-limit headers present}
+  - {url: 'https://developers.cresta.com/', status: 200, note: prose SDK page, no limits}

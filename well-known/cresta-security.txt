@@ -1,0 +1,8 @@
+Contact: mailto:security@cresta.ai
+Contact: https://hackerone.com/75f7cde1-726c-49ae-94e6-cb9ebb1a7168/embedded_submissions/new
+Expires: 2026-12-31T11:59:00.000Z
+Encryption: Please use PGP (fingerprint: 111859244CDF5809CBD47702A0F372C49C8F56DE) to encrypt any communication with security@cresta.com. You can retrieve our key using the following command: gpg --keyserver pgp.mit.edu --recv-keys 111859244CDF5809CBD47702A0F372C49C8F56DE
+Preferred-Languages: en, es, fr
+Canonical: https://cresta.com/.well-known/security.txt
+Policy: https://cresta.com/trust
+Hiring: https://cresta.com/careers

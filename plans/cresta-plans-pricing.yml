@@ -1,0 +1,42 @@
+generated: '2026-08-14'
+method: searched
+source: https://cresta.com/llm-info
+plan_count: 0
+currency: null
+plans: []
+note: >-
+  Cresta publishes no pricing page and no plan tiers. https://cresta.com/pricing
+  returns 404 and no pricing URL appears anywhere in the 857-entry cresta.com
+  sitemap. Cresta states the model itself on its own AI-facing page: "Cresta is
+  sold direct to enterprise via the Cresta sales team. Pricing is custom and
+  based on deployment scope (products, agent count, conversation volume,
+  channels, language coverage). There is no public self-serve tier." Cresta is
+  additionally transacted through Google Cloud Marketplace and through partners
+  including Five9, Genesys, NICE, AWS and Twilio. This is a recorded zero, not a
+  gap in the search.
+sales_motion:
+  model: enterprise-direct
+  self_serve: false
+  free_tier: false
+  trial: false
+  quote_url: https://cresta.com/request-a-demo
+  marketplaces:
+    - Google Cloud Marketplace
+    - AWS
+  partner_resale:
+    - Five9
+    - Genesys
+    - NICE
+    - AWS
+    - Twilio
+  pricing_drivers:
+    - products deployed
+    - agent count
+    - conversation volume
+    - channels
+    - language coverage
+evidence:
+  - {url: 'https://cresta.com/pricing', status: 404}
+  - {url: 'https://cresta.com/llm-info', status: 200}
+  - {url: 'https://cresta.com/request-a-demo', status: 200}
+  - {url: 'https://cresta.com/sitemap.xml', status: 200}

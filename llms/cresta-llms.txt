@@ -1,0 +1,111 @@
+# Cresta
+
+> Cresta Intelligence, Inc. is a Palo Alto, California enterprise Customer Experience AI platform, spun out of the Stanford AI Lab in 2017, that unifies human and AI agents in the contact center across voice, chat, email and SMS. Autonomous AI Agents, real-time Agent Assist, Conversation Intelligence, Quality Management and an Agent Operations Center run on Cresta Opera, a no-code AI orchestration layer, with Cresta Conductor as the developer-facing agentic engine for building and optimizing agents.
+
+Provenance: generated 2026-08-14 by the API Evangelist enrichment pipeline from
+this repository's apis.yml and probed artifacts, plus Cresta's own public pages.
+Cresta does not publish an llms.txt on cresta.com (HTTP 404). It does publish a
+first-party page written for AI assistants at https://cresta.com/llm-info,
+linked from the site footer as "Hey AI, learn about us" — prefer that page for
+company, product and positioning facts. Cresta's help center at
+docs.cresta.com serves an llms.txt but its robots.txt is `Disallow: /` with
+`Content-Signal: ai-train=no, search=no, ai-input=no`; that preference is
+honored here and none of its content is reproduced.
+
+## API status
+
+- Cresta's platform API is REAL but GATED. https://api.cresta.com is live and
+  answers anonymously with a gRPC-JSON transcoding gateway error envelope,
+  confirming a production grpc-gateway in front of Cresta's gRPC services.
+- No OpenAPI, Swagger, AsyncAPI, GraphQL SDL, Protobuf or Postman collection is
+  published on any Cresta host.
+- No API reference, base path list, authentication scheme or SDK package is
+  public. developers.cresta.com describes the SDK in prose and routes
+  integrators to a demo request.
+- Cresta AI Agent is an MCP *client* — it calls a customer's tools over MCP and
+  API function calling. Cresta publishes no MCP server, so agents cannot call
+  Cresta over MCP.
+- No A2A agent card is served at /.well-known/agent-card.json or
+  /.well-known/agent.json on any Cresta host.
+
+## APIs
+
+- [Cresta Platform API](https://developers.cresta.com): Gated. Base host
+  https://api.cresta.com (gRPC-JSON gateway, confirmed live 2026-08-14).
+
+## Machine-readable surfaces that DO exist
+
+- [security.txt](https://cresta.com/.well-known/security.txt): RFC 9116, self-declared canonical.
+- [Status API](https://status.cresta.com/api/v2/summary.json): Atlassian Statuspage v2 JSON, 32 components.
+- [Status summary](https://status.cresta.com/api/v2/status.json): current indicator + description.
+- [Incident history](https://status.cresta.com/history.rss): RSS.
+- [Sitemap](https://cresta.com/sitemap.xml): 857 English URLs.
+
+## Docs
+
+- [Developers](https://developers.cresta.com): SDK/API overview page, gated behind a demo request.
+- [Help Center](https://docs.cresta.com): customer-facing; robots-disallowed, AI signals set to no.
+- [Platform overview](https://cresta.com/platform-overview)
+- [Information for AI assistants](https://cresta.com/llm-info)
+
+## Products
+
+- [AI Agent](https://cresta.com/ai-agent): autonomous omnichannel voice and digital agents.
+- [Agent Assist](https://cresta.com/agent-assist): real-time guidance for human agents.
+- [Conversation Intelligence](https://cresta.com/conversation-intelligence): analysis of 100% of conversations.
+- [Cresta Opera](https://cresta.com/opera): no-code AI orchestration layer.
+- [Knowledge Agent](https://cresta.com/knowledge-agent)
+- [AI Analyst](https://cresta.com/cresta-ai-analyst)
+- [Quality Management](https://cresta.com/cresta-quality-management)
+- [Coach](https://cresta.com/cresta-coach)
+- [Insights](https://cresta.com/cresta-insights)
+- [Automation Discovery](https://cresta.com/cresta-automation-discovery)
+- [Agent Operations Center](https://cresta.com/agent-operations-center)
+- [Training Simulator](https://cresta.com/training-simulator)
+
+## Trust and compliance
+
+- [Trust page](https://cresta.com/trust)
+- [Trust center](https://trust.cresta.com/): SafeBase-hosted.
+- [Responsible AI](https://cresta.com/responsible-ai)
+- Certifications claimed: ISO/IEC 42001 (first CX AI provider), SOC 2 Type II,
+  ISO/IEC 27001, HIPAA, GDPR, TISAX, CCPA, PCI DSS alignment.
+- Vulnerability disclosure: security@cresta.ai and a HackerOne submission form,
+  both named in security.txt; policy at https://cresta.com/trust.
+
+## Commercial
+
+- No public pricing. Enterprise direct sales; no self-serve tier, no free tier,
+  no trial. [Request a demo](https://cresta.com/request-a-demo).
+- Also transacted via Google Cloud Marketplace and AWS, and through Five9,
+  Genesys, NICE, AWS and Twilio partner channels.
+- [Terms of Service](https://cresta.com/legal/terms-of-service)
+- [Privacy Policy](https://cresta.com/legal/privacy-policy)
+- [Service Level Agreement](https://cresta.com/legal/service-level-agreement): page is a client-rendered empty shell.
+- [Partners](https://cresta.com/partner)
+- [Integrations](https://cresta.com/integrations)
+
+## Company
+
+- [About](https://cresta.com/about-us) — CEO Ping Wu; co-founders Zayd Enam,
+  Tim Shi, Sebastian Thrun; Series D, $280M+ raised, 500+ employees.
+- [Blog](https://cresta.com/blog)
+- [Press](https://cresta.com/press)
+- [Customer stories](https://cresta.com/customer-stories)
+- [Careers](https://cresta.com/careers)
+- [GitHub](https://github.com/cresta): 78 public repos of infrastructure
+  tooling, upstream forks and per-partner integration samples — no API client
+  library and no API contract.
+
+## This profile
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/apis.yml)
+- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/vocabulary/cresta-vocabulary.yml)
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/conformance/cresta-conformance.yml)
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/lifecycle/cresta-lifecycle.yml)
+- [Well-known probe](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/well-known/cresta-well-known.yml)
+- [Plans](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/plans/cresta-plans-pricing.yml)
+- [Rate limits](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/rate-limits/cresta-rate-limits.yml)
+- [Packages](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/packages/cresta-packages.yml)
+- [MCP posture](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/mcp/cresta-mcp.yml)
+- [Observed error envelope](https://raw.githubusercontent.com/api-evangelist/cresta/refs/heads/main/errors/cresta-problem-types.yml)

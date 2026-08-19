@@ -1,0 +1,128 @@
+generated: '2026-08-14'
+method: probed
+source: live GET probes of every Cresta host named in apis.yml
+summary:
+  hits: 1
+  hosts_probed: 7
+  note: >-
+    Exactly one Cresta-controlled /.well-known/ document is served:
+    https://cresta.com/.well-known/security.txt (RFC 9116), which names itself
+    Canonical at that URL. Everything else is a miss or a vendor artifact. Two
+    200s were rejected on ownership grounds under STEP 0c: trust.cresta.com
+    serves an OIDC/OAuth discovery document whose issuer is
+    https://app.safebase.io/api/mcp — that is SafeBase, the trust-center SaaS
+    Cresta runs on the subdomain, not a Cresta authorization server — and
+    status.cresta.com serves Atlassian Statuspage's own PGP-signed security.txt,
+    not Cresta's. login.cresta.com is a single-page app that answers HTTP 200
+    with the same HTML shell for every /.well-known/* path, the dominant false
+    positive on this probe; all five of its 200s are rejected.
+hosts:
+  - host: https://cresta.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/plain; charset=utf-8
+        file: cresta-security.txt
+        owned_by_provider: true
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://www.cresta.com
+    documents:
+      - {path: /.well-known/security.txt, status: 200, note: same document as the apex host}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://api.cresta.com
+    note: >-
+      Every path on the API host returns HTTP 405 with the grpc-gateway error
+      envelope. The gateway has no /.well-known/ routes registered.
+    documents:
+      - {path: /.well-known/security.txt, status: 405}
+      - {path: /.well-known/openid-configuration, status: 405}
+      - {path: /.well-known/oauth-authorization-server, status: 405}
+      - {path: /.well-known/oauth-protected-resource, status: 405}
+      - {path: /.well-known/api-catalog, status: 405}
+      - {path: /.well-known/ai-plugin.json, status: 405}
+      - {path: /.well-known/agent-card.json, status: 405}
+      - {path: /.well-known/agent.json, status: 405}
+  - host: https://docs.cresta.com
+    note: >-
+      GitBook-hosted help center. robots.txt is "Disallow: /" and carries
+      "Content-Signal: ai-train=no, search=no, ai-input=no". We honor it — the
+      host was not crawled beyond robots.txt and the discovery probes below.
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 307}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://developers.cresta.com
+    note: Static S3-backed page; all misses return an S3 NoSuchKey XML body.
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://trust.cresta.com
+    note: SafeBase-hosted trust center. The two 200s below are SafeBase's, not Cresta's.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        owned_by_provider: false
+        rejected: vendor-owned
+        evidence: 'issuer: https://app.safebase.io/api/mcp'
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        owned_by_provider: false
+        rejected: vendor-owned
+        evidence: 'issuer: https://app.safebase.io/api/mcp'
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://status.cresta.com
+    note: Atlassian Statuspage.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        owned_by_provider: false
+        rejected: vendor-owned
+        evidence: PGP-signed Atlassian security.txt served by the Statuspage platform
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://login.cresta.com
+    note: >-
+      Single-page app catch-all. Returns HTTP 200 with an identical text/html
+      shell for every /.well-known/* path probed, including nonsense ones. All
+      200s rejected as SPA false positives.
+    documents:
+      - {path: /.well-known/agent-card.json, status: 200, owned_by_provider: false, rejected: spa-html-shell}
+      - {path: /.well-known/agent.json, status: 200, owned_by_provider: false, rejected: spa-html-shell}
+      - {path: /.well-known/security.txt, status: 200, owned_by_provider: false, rejected: spa-html-shell}
+      - {path: /.well-known/openid-configuration, status: 200, owned_by_provider: false, rejected: spa-html-shell}
+      - {path: /.well-known/oauth-authorization-server, status: 200, owned_by_provider: false, rejected: spa-html-shell}
+content_signals:
+  - host: docs.cresta.com
+    source: https://docs.cresta.com/robots.txt
+    robots: 'Disallow: /'
+    content_signal: 'ai-train=no, search=no, ai-input=no'
+    note: >-
+      Cresta's help-center host declines AI training, search indexing and AI
+      input. Honored: no docs.cresta.com content is archived in this repo.
+  - host: cresta.com
+    source: https://cresta.com/robots.txt
+    robots: allows all paths except tracking/faceted query strings
+    content_signal: none
+    note: >-
+      The marketing host publishes no Content-Signal and instead ships a
+      first-party page written for AI assistants at https://cresta.com/llm-info,
+      linked from the site footer as "Hey AI, learn about us".

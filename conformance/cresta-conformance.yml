@@ -1,0 +1,82 @@
+generated: '2026-08-14'
+method: searched
+source: https://cresta.com/llm-info
+docs:
+  - https://cresta.com/trust
+  - https://trust.cresta.com/
+  - https://cresta.com/llm-info
+  - https://cresta.com/responsible-ai
+  - https://cresta.com/blog/cresta-achieves-tisax-compliance
+compliance_program:
+  published: true
+  trust_center: https://trust.cresta.com/
+  trust_page: https://cresta.com/trust
+  note: >-
+    Cresta publishes a SafeBase-hosted trust center plus a first-party
+    trust/security page, and restates its certification set on its own
+    AI-facing page at https://cresta.com/llm-info, where it claims to be the
+    first Customer Experience AI provider to hold ISO/IEC 42001 certification.
+certifications:
+  - {id: 'iso-iec-42001', name: 'ISO/IEC 42001 (AI management systems)', claimed: true, source: 'https://cresta.com/llm-info'}
+  - {id: 'soc2-type-ii', name: 'SOC 2 Type II', claimed: true, source: 'https://cresta.com/llm-info'}
+  - {id: 'iso-27001', name: 'ISO/IEC 27001', claimed: true, source: 'https://trust.cresta.com/'}
+  - {id: 'hipaa', name: 'HIPAA', claimed: true, source: 'https://cresta.com/llm-info'}
+  - {id: 'gdpr', name: 'GDPR', claimed: true, source: 'https://cresta.com/llm-info'}
+  - {id: 'tisax', name: 'TISAX', claimed: true, source: 'https://cresta.com/blog/cresta-achieves-tisax-compliance'}
+  - {id: 'ccpa', name: 'CCPA', claimed: true, source: 'https://cresta.com/llm-info'}
+  - {id: 'pci-dss', name: 'PCI DSS (stated as alignment, not certification)', claimed: true, source: 'https://cresta.com/llm-info'}
+standards:
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: >-
+      https://cresta.com/.well-known/security.txt returns 200 with Contact,
+      Expires, Encryption, Preferred-Languages, Canonical, Policy and Hiring
+      fields.
+  - id: grpc
+    conforms: true
+    evidence: >-
+      api.cresta.com answers with the grpc-gateway transcoding error
+      ("the requested gRPC method is either not registered, or registered with
+      a different HTTP method"), so the platform API is gRPC with JSON
+      transcoding in front of it.
+  - id: google-rpc-status-error-model
+    conforms: true
+    evidence: >-
+      Observed anonymous error body {"code":2,"httpStatus":500,"message":...,
+      "status":"UNKNOWN"} — the google.rpc.Status / gRPC canonical-code model
+      (code 2 = UNKNOWN), not RFC 9457.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: 'Error responses are application/json google.rpc.Status, not application/problem+json.'
+  - id: hsts
+    conforms: true
+    evidence: 'api.cresta.com returns strict-transport-security: max-age=31536000; includeSubDomains.'
+  - id: openapi
+    conforms: false
+    evidence: No OpenAPI or Swagger document is published on any Cresta host.
+  - id: asyncapi
+    conforms: false
+    evidence: >-
+      Cresta ingests audio over WebSocket, gRPC streaming, SIPREC and raw RTP,
+      but publishes no AsyncAPI, channel catalog or message schemas.
+  - id: oauth2
+    conforms: unknown
+    evidence: >-
+      A "Cresta Login" and an "Authentication/User Access" component are listed
+      on the public status page, and login.cresta.com is live, but no OAuth or
+      OIDC discovery document is served on any Cresta-controlled host. The
+      OIDC/OAuth documents on trust.cresta.com belong to SafeBase, not Cresta.
+  - id: mcp
+    conforms: partial
+    evidence: >-
+      Cresta AI Agent is an MCP CLIENT — it consumes external tools over MCP and
+      API function calling. Cresta publishes no MCP server of its own. See
+      mcp/cresta-mcp.yml.
+  - id: content-signals
+    conforms: true
+    evidence: >-
+      docs.cresta.com/robots.txt carries "Content-Signal: ai-train=no,
+      search=no, ai-input=no" — an explicit machine-readable AI-use preference.
+marketplaces:
+  - {name: Google Cloud Marketplace, source: 'https://cresta.com/press/cresta-now-available-on-the-google-cloud-marketplace-with-deployment-on-google-cloud-platform'}
+  - {name: AWS, source: 'https://cresta.com/llm-info'}

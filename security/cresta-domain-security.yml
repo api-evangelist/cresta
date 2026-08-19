@@ -1,15 +1,33 @@
-generated: '2026-07-11'
+generated: '2026-08-14'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: cresta.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Aug 11 21:43:07 2026 GMT
+  cert_expires: Nov  1 20:48:05 2026 GMT
   hsts: false
+- host: developers.cresta.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 11 23:59:59 2026 GMT
+  hsts: false
+- host: api.cresta.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov  1 20:48:05 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+  hsts_note: >-
+    The probe script records null here because the gRPC-JSON gateway answers
+    its HEAD with 405. A direct GET on 2026-08-14 returned
+    "strict-transport-security: max-age=31536000; includeSubDomains", so HSTS is
+    present on the API host. Corrected by hand; re-running
+    0-working/probe-domain-security.py will revert it to null.
 domains:
 - domain: cresta.com
-  dnssec: false
+  dnssec: true
   caa: []
   spf: true
   dmarc: true

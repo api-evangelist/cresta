@@ -1,0 +1,46 @@
+generated: '2026-08-14'
+method: probed
+source: https://api.cresta.com/
+format: google.rpc.Status
+published_catalog: false
+note: >-
+  Cresta publishes no error reference. This artifact records the ONE error shape
+  that is observable anonymously: the gRPC-JSON transcoding gateway at
+  api.cresta.com answers every unregistered path/method with a google.rpc.Status
+  envelope. That is an observed runtime fact, not a documented contract, so no
+  `ErrorCatalog` pointer is wired in apis.yml — wiring one would credit Cresta
+  with an error-semantics contract it has not published.
+envelope:
+  media_type: application/json
+  fields:
+    - {name: code, type: integer, meaning: 'gRPC canonical status code (google.rpc.Code)'}
+    - {name: httpStatus, type: integer, meaning: 'HTTP status the gateway maps the gRPC code to; note it disagrees with the wire status'}
+    - {name: message, type: string, meaning: human-readable detail}
+    - {name: status, type: string, meaning: 'gRPC canonical status name'}
+  observed_example: >-
+    {"code":2,"httpStatus":500,"message":"the requested gRPC method is either
+    not registered, or registered with a different HTTP method",
+    "status":"UNKNOWN"}
+problems:
+  - status: 405
+    code: 2
+    grpc_status: UNKNOWN
+    title: gRPC method not registered for this HTTP method
+    detail: >-
+      Returned for every unmapped path and every HTTP verb probed (GET, POST,
+      OPTIONS) at the gateway root and below.
+    source_operation: null
+    observed_at: '2026-08-14'
+observations:
+  - >-
+    The envelope reports httpStatus 500 while the transport returns 405. A
+    consumer that reads the body will see a server error where the wire says
+    method-not-allowed; an agent retrying on 5xx would retry a request that can
+    never succeed. Recorded as observed, not as a defect claim.
+  - >-
+    The gateway sets access-control-max-age: 7200 on responses but returns no
+    access-control-allow-origin to an anonymous origin-less request.
+evidence:
+  - {url: 'https://api.cresta.com/', method: GET, status: 405}
+  - {url: 'https://api.cresta.com/', method: POST, status: 405}
+  - {url: 'https://api.cresta.com/', method: OPTIONS, status: 405}
