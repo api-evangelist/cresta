@@ -134,6 +134,8 @@ apis:
       - type: ContactSales
         url: https://cresta.com/request-a-demo
 common:
+  - type: RateLimits
+    url: rate-limits/cresta-rate-limits.yml
   - type: TrustCenter
     url: security/cresta-trust-center.yml
   - type: VulnerabilityDisclosure
