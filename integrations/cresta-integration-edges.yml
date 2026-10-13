@@ -1,0 +1,21 @@
+generated: '2026-10-13'
+method: searched
+checked:
+- https://aws.amazon.com/marketplace/
+marketplace_apps: []
+edges:
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=17e4ab1c-288d-4976-863d-d88b4721ba3e
+  listing_count: 1
+  apps:
+  - Contact Center AI Platform
+  seller_name: Cresta Intelligence
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
